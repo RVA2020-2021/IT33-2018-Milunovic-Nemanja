@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -9,6 +13,7 @@ import java.util.List;
  * The persistent class for the grupa database table.
  * 
  */
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @NamedQuery(name="Grupa.findAll", query="SELECT g FROM Grupa g")
 public class Grupa implements Serializable {
@@ -27,6 +32,7 @@ public class Grupa implements Serializable {
 	private Smer smer;
 
 	//bi-directional many-to-one association to Student
+	@JsonIgnore
 	@OneToMany(mappedBy="grupa")
 	private List<Student> students;
 

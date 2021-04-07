@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -9,6 +13,7 @@ import java.util.List;
  * The persistent class for the projekat database table.
  * 
  */
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @NamedQuery(name="Projekat.findAll", query="SELECT p FROM Projekat p")
 public class Projekat implements Serializable {
@@ -26,6 +31,7 @@ public class Projekat implements Serializable {
 	private String oznaka;
 
 	//bi-directional many-to-one association to Student
+	@JsonIgnore
 	@OneToMany(mappedBy="projekat")
 	private List<Student> students;
 
