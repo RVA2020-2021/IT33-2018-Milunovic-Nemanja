@@ -20,7 +20,7 @@ public class Smer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SMER_ID_GENERATOR", sequenceName="SMER_SEQ")
+	@SequenceGenerator(name="SMER_ID_GENERATOR", sequenceName="SMER_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SMER_ID_GENERATOR")
 	private Integer id;
 
