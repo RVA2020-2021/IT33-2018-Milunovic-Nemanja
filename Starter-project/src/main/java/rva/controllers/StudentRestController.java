@@ -78,7 +78,9 @@ public class StudentRestController {
 		if(!studentRepository.existsById(id)) {
 			return new ResponseEntity<Student>(HttpStatus.NO_CONTENT);
 		}
+		
 		studentRepository.deleteById(id);
+		studentRepository.flush();
 		
 		if(id == -100) {
 			jdbcTemplate.execute(

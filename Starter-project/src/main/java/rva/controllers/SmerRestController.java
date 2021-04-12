@@ -78,14 +78,30 @@ public class SmerRestController {
 			return new ResponseEntity<Smer>(HttpStatus.NO_CONTENT);
 		}
 		
-		//Da li radi cascading? ili moram implementirati delete ako brisem smer brisem grupu i studenta
+		if(id == -100) {
+			jdbcTemplate.execute("DELETE FROM student WHERE grupa = -100");
+		}
+		
+		jdbcTemplate.execute("DELETE FROM grupa WHERE smer = " + id);
 		
 		smerRepository.deleteById(id);
+		smerRepository.flush();		
 		
 		if(id == -100) {
+			
 			jdbcTemplate.execute(
 					"INSERT INTO \"smer\"(\"id\", \"naziv\", \"oznaka\")"
 					+ "VALUES (-100, 'Inzenjerski menadzment', 'IIM');"
+					);
+			
+			jdbcTemplate.execute(
+					"INSERT INTO \"grupa\"(\"id\", \"oznaka\", \"smer\")"
+					+ "VALUES(-100, 'G1', '-100')"
+					);
+			
+			jdbcTemplate.execute(
+					"INSERT INTO \"student\"(\"id\", \"ime\", \"prezime\", \"broj_indeksa\", \"grupa\", \"projekat\")"
+					+ "VALUES(-100, 'Milan', 'Milankovic', 'IIM-23/2018', '-100', '-100')"
 					);
 		}
 		

@@ -76,14 +76,20 @@ public class ProjekatRestController {
 			return new ResponseEntity<Projekat>(HttpStatus.NO_CONTENT);
 		}
 		
-		
+		jdbcTemplate.execute("DELETE FROM student WHERE projekat = " + id);
 		
 		projekatRepository.deleteById(id);
-		
+		projekatRepository.flush();
+			
 		if(id == -100) {
 			jdbcTemplate.execute(
 					"INSERT INTO \"projekat\"(\"id\", \"naziv\", \"oznaka\", \"opis\")"
 					+ "VALUES(-100, 'Seminarski', 'SE', 'Napisati seminarski')"
+					);
+			
+			jdbcTemplate.execute(
+					"INSERT INTO \"student\"(\"id\", \"ime\", \"prezime\", \"broj_indeksa\", \"grupa\", \"projekat\")"
+					+ "VALUES(-100, 'Milan', 'Milankovic', 'IIM-23/2018', '-100', '-100')"
 					);
 		}
 		

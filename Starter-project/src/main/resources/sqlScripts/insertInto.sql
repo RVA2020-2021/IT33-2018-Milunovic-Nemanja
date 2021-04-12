@@ -9,6 +9,9 @@ INSERT INTO "smer"("id", "naziv", "oznaka")
 VALUES (nextval('smer_seq'), 'Racunarstvo i automatika', 'E2');
 
 INSERT INTO "smer"("id", "naziv", "oznaka")
+VALUES (nextval('smer_seq'), 'Informacioni inzenjering', 'IM');
+
+INSERT INTO "smer"("id", "naziv", "oznaka")
 VALUES (-100, 'Inzernjerski menadzment', 'IIM');
 
 --projekat podaci
@@ -20,6 +23,9 @@ VALUES (nextval('projekat_seq'), 'Viseslojna aplikacija', 'VA', 'Napraviti vises
 
 INSERT INTO "projekat"("id", "naziv", "oznaka", "opis")
 VALUES (nextval('projekat_seq'), 'BAZA PODATAKA', 'BP', 'Napraviti bazu podataka');
+
+INSERT INTO "projekat"("id", "naziv", "oznaka", "opis")
+VALUES (nextval('projekat_seq'), 'Android aplikacija', 'AC', 'Napraviti android aplikaciju');
 
 INSERT INTO "projekat"("id", "naziv", "oznaka", "opis")
 VALUES (-100, 'Seminarski', 'SE', 'Napisati seminarski');
@@ -51,9 +57,18 @@ INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat
 VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 2, 1);
 
 INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
+VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 1, 2);
+
+INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
+VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 3, 3);
+
+INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
+VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 4, 4);
+
+INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
 VALUES (-100, 'Milan', 'Milankovic', 'IIM-23/2018', '-100', '-100');
 
-
+select * from student;
 SELECT * FROM smer;
 SELECT * FROM projekat;
 SELECT * FROM grupa;

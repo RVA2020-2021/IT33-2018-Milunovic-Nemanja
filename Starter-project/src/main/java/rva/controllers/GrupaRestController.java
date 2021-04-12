@@ -78,14 +78,20 @@ public class GrupaRestController {
 			return new ResponseEntity<Grupa>(HttpStatus.NO_CONTENT);
 		}
 		
-		//jdbcTemplate.execute("DELETE FROM student WHERE grupa = " + id);
+		jdbcTemplate.execute("DELETE FROM student WHERE grupa = " + id);
 		
 		grupaRepository.deleteById(id);
+		grupaRepository.flush();
 		
 		if(id == -100) {
 			jdbcTemplate.execute(
 					"INSERT INTO \"grupa\"(\"id\", \"oznaka\", \"smer\")"
 					+ "VALUES(-100, 'G1', '-100')"
+					);
+			
+			jdbcTemplate.execute(
+					"INSERT INTO \"student\"(\"id\", \"ime\", \"prezime\", \"broj_indeksa\", \"grupa\", \"projekat\")"
+					+ "VALUES(-100, 'Milan', 'Milankovic', 'IIM-23/2018', '-100', '-100')"
 					);
 		}
 		
