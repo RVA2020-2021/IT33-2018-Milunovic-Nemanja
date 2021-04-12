@@ -1,6 +1,9 @@
 package rva.controllers;
 
+
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import rva.jpa.Grupa;
 import rva.jpa.Smer;
 import rva.repository.SmerRepository;
 
@@ -78,10 +82,15 @@ public class SmerRestController {
 			return new ResponseEntity<Smer>(HttpStatus.NO_CONTENT);
 		}
 		
-		if(id == -100) {
-			jdbcTemplate.execute("DELETE FROM student WHERE grupa = -100");
-		}
+		Smer smer = getSmer(id);	//Calling getSmer method to get this smer by id
 		
+		List<Grupa> grupe = smer.getGrupas();	//Taking list of groups to delete students because of foreign key constraint
+		Iterator<Grupa> it = grupe.iterator();	//Making new iterator for going through the list of groups
+		
+		while(it.hasNext()) {
+			jdbcTemplate.execute("DELETE FROM student WHERE grupa = " + it.next().getId());	//Deleting students in groups that are being deleted
+		}
+				
 		jdbcTemplate.execute("DELETE FROM grupa WHERE smer = " + id);
 		
 		smerRepository.deleteById(id);
