@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class Swagger {
 
-	public static final Contact DEFAULT_CONTACT = new Contact("Dejana Gladic", "https://github.com/DejanaGladic", "dejanagladic@uns.ac.rs");
+	public static final Contact DEFAULT_CONTACT = new Contact("Nemanja Milunovic", "https://github.com/MilunovicN99", "milunovic.nemanja@uns.ac.rs");
 	
 	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Backend RVA Swagger", "Razvoj viseslojnih aplikacija", "1.0", "", DEFAULT_CONTACT, "", "", new ArrayList<VendorExtension>());
 	

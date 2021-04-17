@@ -46,7 +46,5 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Milos/Documents/Maven/springfox-swagger2-2.9.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Milos/Documents/Maven/springfox-swagger-ui-2.9.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
