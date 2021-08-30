@@ -7,7 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'smer', component: SmerComponent }
+  { path: 'smer', component: SmerComponent },
+  { path: 'home', component: SmerComponent },
+  { path: 'student', component: StudentComponent },
+  { path: 'grupa', component: GrupaComponent },
+  { path: 'projekat', component: ProjekatComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
