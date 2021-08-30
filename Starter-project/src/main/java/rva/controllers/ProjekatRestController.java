@@ -52,7 +52,7 @@ public class ProjekatRestController {
 	@ApiOperation(value = "Upisuje projekat u bazu podataka")
 	@PostMapping("/projekat")
 	public ResponseEntity<Projekat> insertProjekat(@RequestBody Projekat projekat){
-		if(!projekatRepository.existsById(projekat.getId())) {
+		if(projekatRepository.existsById(projekat.getId())) {
 			return new ResponseEntity<Projekat>(HttpStatus.CONFLICT);
 		}
 		projekatRepository.save(projekat);
