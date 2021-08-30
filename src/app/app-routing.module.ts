@@ -1,8 +1,14 @@
+import { ProjekatComponent } from './components/projekat/projekat.component';
+import { StudentComponent } from './components/student/student.component';
+import { GrupaComponent } from './components/grupa/grupa.component';
+import { SmerComponent } from './components/smer/smer.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'smer', component: SmerComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
