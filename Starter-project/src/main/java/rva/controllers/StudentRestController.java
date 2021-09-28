@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import rva.jpa.Grupa;
 import rva.jpa.Student;
+import rva.repository.GrupaRepository;
 import rva.repository.StudentRepository;
 
 @CrossOrigin	//Lets controller to get called by other origins example angular
@@ -31,6 +33,9 @@ public class StudentRestController {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private GrupaRepository grupaRepository;
 	
 	
 	@ApiOperation(value = "Vraca kolekciju studenata iz baze podataka")
@@ -46,9 +51,15 @@ public class StudentRestController {
 	}
 	
 	@ApiOperation(value = "Vraca kolekciju studenata iz baze podataka sa zadatim imenom")
-	@GetMapping("student/ime/{ime}")
+	@GetMapping("studentIme/{ime}")
 	public Collection<Student> getStudentByIme(@PathVariable("ime") String ime){
 		return studentRepository.findByImeContainingIgnoreCase(ime);
+	}
+	
+	@GetMapping("studentGrupa/{id}")
+	public Collection<Student> getStudentByGrupa(@PathVariable("id") int id){
+		Grupa grupa = grupaRepository.getOne(id);
+		return studentRepository.findByGrupa(grupa);
 	}
 	
 	@ApiOperation(value = "Upisuje studenta u bazu podataka")
