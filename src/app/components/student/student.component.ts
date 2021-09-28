@@ -1,10 +1,11 @@
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { StudentService } from './../../services/student.service';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/models/student';
 import { Subscription } from 'rxjs';
+import { Grupa } from 'src/app/models/grupa';
 
 @Component({
   selector: 'app-student',
@@ -16,6 +17,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   displayedColumns = ['id', 'ime', 'prezime', 'broj_indeksa', 'grupa', 'projekat', 'actions'];
   dataSource: MatTableDataSource<Student>;
   subscription: Subscription;
+  @Input() selectedGrupa: Grupa;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 

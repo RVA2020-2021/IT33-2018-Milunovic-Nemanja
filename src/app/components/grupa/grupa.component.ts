@@ -5,7 +5,7 @@ import { GrupaService } from './../../services/grupa.service';
 import { Grupa } from './../../models/grupa';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
+import { GroupedObservable, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Smer } from 'src/app/models/smer';
 
@@ -19,6 +19,7 @@ export class GrupaComponent implements OnInit, OnDestroy {
   displayedColumns = ['id', 'oznaka', 'smer', 'actions'];
   dataSource: MatTableDataSource<Grupa>;
   subscription: Subscription;
+  selectedGrupa: Grupa;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
@@ -61,6 +62,10 @@ export class GrupaComponent implements OnInit, OnDestroy {
         this.loadData();
       }
     })
+  }
+
+  selectRow(row: any){
+    this.selectedGrupa = row;
   }
 
 }
