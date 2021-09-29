@@ -32,6 +32,9 @@ import { SmerDialogComponent } from './components/dialogs/smer-dialog/smer-dialo
 import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/projekat-dialog.component';
 import { GrupaDialogComponent } from './components/dialogs/grupa-dialog/grupa-dialog.component';
 import { StudentDialogComponent } from './components/dialogs/student-dialog/student-dialog.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthorComponent } from './components/author/author.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { StudentDialogComponent } from './components/dialogs/student-dialog/stud
     SmerDialogComponent,
     ProjekatDialogComponent,
     GrupaDialogComponent,
-    StudentDialogComponent
+    StudentDialogComponent,
+    HomeComponent,
+    AuthorComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

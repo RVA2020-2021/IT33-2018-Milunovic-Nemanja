@@ -10,7 +10,7 @@
       </div>
       <div class="form">
         <mat-form-field>
-          <mat-select [(ngModel)]="data.smer" placeholder="Smer" name="smer" [disabled]="flag == 3">
+          <mat-select [(ngModel)]="data.smer" placeholder="Smer" name="smer" [compareWith]="compareTo" [disabled]="flag == 3">
             <mat-option *ngFor="let smer of smerovi" [value]="smer">
               {{ smer.naziv }}
             </mat-option>

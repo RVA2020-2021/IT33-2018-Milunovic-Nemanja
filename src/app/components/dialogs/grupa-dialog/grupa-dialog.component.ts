@@ -76,4 +76,8 @@ export class GrupaDialogComponent implements OnInit {
       duration: 1000
     })
   }
+
+  compareTo(a,b) {
+    return a.id == b.id;
+  }
 }

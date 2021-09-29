@@ -20,7 +20,7 @@
       </div>
       <div class="form">
         <mat-form-field>
-          <mat-select [(ngModel)]="data.grupa" placeholder="Grupa" name="grupa"  [disabled]="flag == 3">
+          <mat-select [(ngModel)]="data.grupa" placeholder="Grupa" name="grupa" [compareWith]="compareTo" [disabled]="flag == 3">
             <mat-option *ngFor="let grupa of grupe" [value]="grupa">
               {{ grupa.oznaka + ', ' + grupa.smer.oznaka }}
             </mat-option>
@@ -29,7 +29,7 @@
       </div>
       <div class="form">
         <mat-form-field>
-          <mat-select [(ngModel)]="data.projekat" placeholder="Projekat" name="projekat"  [disabled]="flag == 3">
+          <mat-select [(ngModel)]="data.projekat" placeholder="Projekat" name="projekat" [compareWith]="compareTo" [disabled]="flag == 3">
             <mat-option *ngFor="let projekat of projekti" [value]="projekat">
               {{ projekat.naziv + ', ' + projekat.oznaka }}
             </mat-option>
