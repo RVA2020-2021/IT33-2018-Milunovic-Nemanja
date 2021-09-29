@@ -30,7 +30,7 @@ public class Smer implements Serializable {
 
 	//bi-directional many-to-one association to Grupa
 	@JsonIgnore
-	@OneToMany(mappedBy="smer")
+	@OneToMany(mappedBy="smer", cascade = {CascadeType.DETACH, CascadeType.REMOVE})
 	private List<Grupa> grupas;
 
 	public Smer() {

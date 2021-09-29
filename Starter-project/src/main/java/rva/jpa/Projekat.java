@@ -32,7 +32,7 @@ public class Projekat implements Serializable {
 
 	//bi-directional many-to-one association to Student
 	@JsonIgnore
-	@OneToMany(mappedBy="projekat")
+	@OneToMany(mappedBy="projekat", cascade = {CascadeType.DETACH, CascadeType.REMOVE})
 	private List<Student> students;
 
 	public Projekat() {

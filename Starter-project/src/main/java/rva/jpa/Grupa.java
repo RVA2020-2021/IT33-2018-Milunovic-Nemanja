@@ -33,7 +33,7 @@ public class Grupa implements Serializable {
 
 	//bi-directional many-to-one association to Student
 	@JsonIgnore
-	@OneToMany(mappedBy="grupa")
+	@OneToMany(mappedBy="grupa", cascade = {CascadeType.DETACH, CascadeType.REMOVE})
 	private List<Student> students;
 
 	public Grupa() {
