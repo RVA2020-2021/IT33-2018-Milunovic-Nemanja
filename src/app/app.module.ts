@@ -35,6 +35,7 @@ import { StudentDialogComponent } from './components/dialogs/student-dialog/stud
 import { HomeComponent } from './components/home/home.component';
 import { AuthorComponent } from './components/author/author.component';
 import { AboutComponent } from './components/about/about.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { AboutComponent } from './components/about/about.component';
     MatSelectModule,
     MatNativeDateModule,
     MatPaginatorModule,
+    MatSortModule,
     FormsModule
   ],
   providers: [],

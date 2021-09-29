@@ -27,11 +27,13 @@ export class StudentComponent implements OnInit, OnDestroy {
   constructor(private studentService: StudentService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.loadData();
+    //this.loadData();
   }
 
   ngOnChanges(): void {
-    this.loadData();
+    if (this.selectedGrupa.id) {
+      this.loadData();
+    }
   }
 
   ngOnDestroy(): void {
@@ -43,7 +45,24 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.subscription = this.studentService.getStudentsByGrupa(this.selectedGrupa.id)
       .subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
-        
+
+        this.dataSource.filterPredicate = (data, filter: string) =>{
+          const accumulator = (currentTerm, key) => {
+            return key === 'grupa' ? currentTerm + data.grupa.oznaka : currentTerm + data[key];
+          }
+          const dataStr = Object.keys(data).reduce(accumulator,'').toLowerCase();
+          const transformedFilter = filter.trim().toLowerCase();
+          return dataStr.indexOf(transformedFilter) !== -1;
+        };
+
+        this.dataSource.sortingDataAccessor = (data, property) => {
+          switch(property) {
+            case 'grupa': return data.grupa.oznaka.toLowerCase();
+  
+            default: return data[property];
+          }
+        };
+
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }),

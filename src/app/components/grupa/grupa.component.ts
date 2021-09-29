@@ -37,6 +37,24 @@ export class GrupaComponent implements OnInit, OnDestroy {
     this.subscription = this.grupaService.getAllGrupa()
       .subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
+
+        this.dataSource.filterPredicate = (data, filter: string) => {
+          const accumulator = (currentTerm, key) => {
+            return key === 'smer' ? currentTerm + data.smer.oznaka : currentTerm + data[key];
+          };
+          const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+          const transformedFilter = filter.trim().toLowerCase();
+          return dataStr.indexOf(transformedFilter) !== -1;
+        };
+
+        // sortiranje po nazivu ugnježdenog objekta
+        this.dataSource.sortingDataAccessor = (data, property) => {
+          switch (property) {
+            case 'smer': return data.smer.oznaka.toLocaleLowerCase();
+            default: return data[property];
+          }
+        };
+
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }),
