@@ -4,7 +4,7 @@ export class Student{
     id: number;
     ime: string;
     prezime: string;
-    broj_indeksa: string;
+    brojIndeksa: string;
     grupa: Grupa;
     projekat: Projekat;
 }

@@ -15,6 +15,10 @@ export class StudentService {
     return this.httpClient.get(`${STUDENT_URL}`);
   }
 
+  public getStudentsByGrupa(id: number): Observable<any>{
+    return this.httpClient.get('http://localhost:8083/studentGrupa/' + id);
+  }
+
   public addStudent(student: Student): Observable<any> {
     student.id=0;
     return this.httpClient.post(`${STUDENT_URL}`, student);
@@ -24,7 +28,7 @@ export class StudentService {
     return this.httpClient.put(`${STUDENT_URL}`, student);
   }
 
-  public deleteStydebt(id: number): Observable<any> {
+  public deleteStudent(id: number): Observable<any> {
     return this.httpClient.delete(`${STUDENT_URL}/${id}`);
   }
 }
