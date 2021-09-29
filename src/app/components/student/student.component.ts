@@ -43,6 +43,7 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.subscription = this.studentService.getStudentsByGrupa(this.selectedGrupa.id)
       .subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
+        
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }),
