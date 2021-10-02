@@ -40,7 +40,7 @@ export class GrupaComponent implements OnInit, OnDestroy {
 
         this.dataSource.filterPredicate = (data, filter: string) => {
           const accumulator = (currentTerm, key) => {
-            return key === 'smer' ? currentTerm + data.smer.oznaka : currentTerm + data[key];
+            return key === 'smer' ? currentTerm + data.smer.naziv : currentTerm + data[key];
           };
           const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
           const transformedFilter = filter.trim().toLowerCase();
@@ -50,7 +50,7 @@ export class GrupaComponent implements OnInit, OnDestroy {
         // sortiranje po nazivu ugnježdenog objekta
         this.dataSource.sortingDataAccessor = (data, property) => {
           switch (property) {
-            case 'smer': return data.smer.oznaka.toLocaleLowerCase();
+            case 'smer': return data.smer.naziv.toLocaleLowerCase();
             default: return data[property];
           }
         };

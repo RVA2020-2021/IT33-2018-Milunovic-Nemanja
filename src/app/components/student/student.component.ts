@@ -48,7 +48,7 @@ export class StudentComponent implements OnInit, OnDestroy {
 
         this.dataSource.filterPredicate = (data, filter: string) =>{
           const accumulator = (currentTerm, key) => {
-            return key === 'grupa' ? currentTerm + data.grupa.oznaka : currentTerm + data[key];
+            return key === 'projekat' ? currentTerm + data.projekat.naziv : currentTerm + data[key];
           }
           const dataStr = Object.keys(data).reduce(accumulator,'').toLowerCase();
           const transformedFilter = filter.trim().toLowerCase();
@@ -57,7 +57,7 @@ export class StudentComponent implements OnInit, OnDestroy {
 
         this.dataSource.sortingDataAccessor = (data, property) => {
           switch(property) {
-            case 'grupa': return data.grupa.oznaka.toLowerCase();
+            case 'projekat': return data.projekat.naziv.toLowerCase();
   
             default: return data[property];
           }
