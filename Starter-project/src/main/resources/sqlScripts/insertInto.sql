@@ -57,13 +57,13 @@ INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat
 VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 2, 1);
 
 INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
-VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 1, 2);
+VALUES (nextval('student_seq'), 'Ratko', 'Pavlovic', 'IT-11/2018', 1, 2);
 
 INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
-VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 3, 3);
+VALUES (nextval('student_seq'), 'Mirka', 'Vasiljevic', 'IT-44/2018', 3, 3);
 
 INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
-VALUES (nextval('student_seq'), 'Nemanja', 'Milunovic', 'IT-33/2018', 4, 4);
+VALUES (nextval('student_seq'), 'Dusica', 'Pusic', 'IT-61/2018', 4, 4);
 
 INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
 VALUES (-100, 'Milan', 'Milankovic', 'IIM-23/2018', '-100', '-100');
